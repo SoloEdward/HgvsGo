@@ -1,11 +1,11 @@
 # HgvsGo
 
-Program For Analyzing Hgvs for SNV and Small INDEL
+Program For Analyzing "c." and "p." hgvs for SNV and Small INDEL after variant calling.
 
 ## Why HgvsGo?
 
 Firstly, HgvsGo is invented for clinical usage.
-Secondly, HgvsGo is accurate. 
+Secondly, HgvsGo is accurate. It applies 3' rule to both "c." and "p." hgvs.
 Thirdly, HgvsGo is fast. It takes only 20 seconds on my mac to annotate >1,300,000 variants (variants from clinvar database which is download from ncbi).
 
 ## How to use it? 
@@ -40,3 +40,7 @@ Input is a tab-delimited txt file. It must contain at least four columns with ch
 
 ## Output Format
 Output is also a tab-delimited txt file. It will contian all the columns in the input, and will write the annotated hgvs result after each line. See demo.output.txt as an example. Notice that for each line in the input, if the variant in this line is overlaped with multiple transcripts, then multiple hgvs results will be generated, thus for each line in the input file, one or multiple line will be generated in the output file.
+
+## How does HgvsGo work?
+For each snv or small indel, HgvsGo will firstly find those transcripts overlapped with this variant. Then, for each overlapped transcript, HgvsGo will calculate "c." and "p." hgvs. The "refseq.select.hg19.parsed.txt" is download from ucsc table browser and parsed, it is used for find overlapping transcripts given a variant. The GRCh37 genome is used for applying 3' rule to "c." hgvs. The "GRCh37_latest_rna.fna" is used for translating dna to amino acids and applying 3' rule to "p." hgvs. 
+Specially, for the gene "TERT", those variants located <500 bp before the transcript start position of "TERT" will also be annotated as "TERT", since there is several hot spots on TERT promoter region.
