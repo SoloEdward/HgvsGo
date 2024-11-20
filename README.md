@@ -8,37 +8,9 @@ HgvsGo was specifically developed for clinical use, making it well-suited for me
 
 ## How to Use HgvsGo
 
-### Step 1: Download the Repository and Build HgvsGo
-
 ```
-git clone https://github.com/SoloEdward/HgvsGo.git
-cd ./HgvsGo/src/
-mkdir build
-cd build/
-cmake ..
-make
-cd ../../
-```
-
-### Step 2: Download and Prepare the Human Genome
-
-```
-wget https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.fna.gz
-gunzip GRCh37_latest_genomic.fna.gz
-python parse_genome.py
-```
-
-### Step 3: Download RNA Sequences for All Transcripts
-
-```
-wget https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_rna.fna.gz
-gunzip GRCh37_latest_rna.fna.gz
-```
-
-### Step 4: Run the Program
-
-```
-./src/build/HgvsGo ./GRCh37_latest_rna.fna.gz ./human.genome.fa ./refseq.select.hg19.parsed.txt demo.input.txt demo.output.txt
+apptainer run HgvsGo.hg19.sif demo.input.txt demo.output.txt
+apptainer run HgvsGo.hg38.sif demo.hg38.input.txt demo.hg38.output.txt
 ```
 
 ## Input Format
