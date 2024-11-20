@@ -8,9 +8,17 @@ HgvsGo was specifically developed for clinical use, making it well-suited for me
 
 ## How to Use HgvsGo
 
+1. install [apptainer](https://apptainer.org/docs/admin/main/installation.html) first
+2. download .sif file from [Releases](https://github.com/SoloEdward/HgvsGo/releases/tag/0.0.2) Page
+3. run command below
+
 ```
+# human genome version GRCh37.p13
 apptainer run HgvsGo.hg19.sif demo.input.txt demo.output.txt
-apptainer run HgvsGo.hg38.sif demo.hg38.input.txt demo.hg38.output.txt
+
+# human genome version GRCh38.p14, PS: HgvsGo.hg38.sif is not extensively tested
+apptainer run HgvsGo.hg38.sif demo.hg38.input.txt demo.hg38.output.txt 
+
 ```
 
 ## Input Format
